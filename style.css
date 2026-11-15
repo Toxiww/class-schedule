@@ -176,11 +176,13 @@ dialog .ok{min-height:0;margin:0}
 dialog .ok:empty{display:none}
 dialog .row{margin-top:4px}
 
-/* Вертикальне вирівнювання тексту в полях дати й часу — лише для сенсорних екранів (iOS Safari зміщує текст вгору) */
-@media (hover:none) and (pointer:coarse){
-  input[type="date"],input[type="time"]{display:flex;align-items:center;height:48px;min-height:48px;padding-top:0;padding-bottom:0;line-height:normal}
-  input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{min-height:0;margin:0;padding:0;line-height:normal;text-align:left;width:100%}
-  input[type="date"]::-webkit-datetime-edit,input[type="time"]::-webkit-datetime-edit{padding:0;margin:0;line-height:normal}
-  input[type="date"]::-webkit-datetime-edit-fields-wrapper,input[type="time"]::-webkit-datetime-edit-fields-wrapper{padding:0}
-  input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{margin-left:auto}
+/* Поля дати й часу: власна іконка, однаковий вигляд на ПК, планшеті та iPhone */
+input[type="date"],input[type="time"]{
+  display:block;position:relative;height:48px;min-height:48px;padding:0 46px 0 12px;line-height:normal;
+  -webkit-appearance:none;appearance:none;background-repeat:no-repeat;background-position:right 14px center;background-size:20px 20px;
 }
+input[type="date"]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232B2F45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E")}
+input[type="time"]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232B2F45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E")}
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer}
+input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{text-align:left;margin:0;min-height:1.2em}
+input[type="date"]::-webkit-datetime-edit,input[type="time"]::-webkit-datetime-edit{padding:0}
