@@ -101,8 +101,9 @@ dialog h3{margin:0 0 14px;font-size:1.25rem}
   .tabs{order:2;width:100%;gap:10px}
   .tabs a{flex:1;justify-content:center;border:0;border-radius:10px;background:var(--soft);color:var(--accent-d);font-weight:600;box-shadow:0 2px 6px rgba(43,47,69,.12)}
   .tabs a[aria-current="page"]{background:var(--accent);color:#fff}
-  .layout{grid-template-columns:1fr;gap:14px;padding:12px 24px;align-content:start;flex:none}
-  body{display:block}
+  .layout{display:flex;flex-direction:column;gap:14px;padding:12px 24px;flex:1}
+  .actions{margin-top:auto;padding-top:14px}
+  .foot{padding:6px 24px 20px}
   .panel{background:transparent;box-shadow:none;padding:0}
   .search form{display:grid;grid-template-columns:2fr auto;gap:12px;align-items:end}
   .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields .field{margin:0}
