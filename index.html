@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Розклад занять</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1 class="brand">Розклад занять</h1>
+  <nav class="tabs" aria-label="Основна навігація">
+    <a href="#home" aria-current="page">Головна</a>
+    <a href="#groups">Групи</a>
+    <a href="#teachers">Викладачі</a>
+    <a href="#lessons">Заняття</a>
+  </nav>
+  <button class="btn sec support" id="openFb" type="button">Техпідтримка</button>
+</header>
+
+<main class="layout" id="home">
+  <section class="panel search" aria-labelledby="sH">
+    <h2 id="sH">Пошук занять</h2>
+    <form id="searchForm" novalidate>
+      <div class="fields">
+        <div class="field"><label for="date">Виберіть дату</label><input type="date" id="date" value="2026-09-30"></div>
+        <div class="field"><label for="group">Виберіть групу</label><select id="group"></select></div>
+      </div>
+      <fieldset class="types"><legend>Тип заняття</legend>
+        <button type="button" class="chip prac" aria-pressed="false">Практична</button>
+        <button type="button" class="chip lab" aria-pressed="false">Лабораторна</button>
+        <button type="button" class="chip lec" aria-pressed="false">Лекція</button>
+      </fieldset>
+      <button class="btn go" type="submit">Пошук занять</button>
+    </form>
+  </section>
+
+  <section class="panel schedule" aria-labelledby="schT">
+    <div class="head">
+      <h2 id="schT"><span class="h-week"></span><span class="h-day"></span></h2>
+      <button class="btn sec small" id="remindBtn" type="button" aria-pressed="false">🔔 Нагадувати про пари</button>
+    </div>
+    <p class="count" id="count" role="status" aria-live="polite"></p>
+    <div class="week" id="week"></div>
+    <ul class="list" id="list"></ul>
+    <p class="remind-msg" id="remindMsg" role="status" aria-live="polite"></p>
+  </section>
+
+  <aside class="panel actions" aria-labelledby="aH">
+    <h2 id="aH">Дії</h2>
+    <button class="btn" id="openAdd" type="button">Додати заняття</button>
+    <button class="btn sec" id="openGroup" type="button">Додати групу</button>
+    <button class="btn sec" id="openTeacher" type="button">Додати викладача</button>
+  </aside>
+</main>
+
+<footer class="foot">
+  <div><button class="link" id="openFb2" type="button">Технічна підтримка</button><br>Тел. +38 (097) 302-29-85</div>
+  <div class="r">Email: email@gmail.com</div>
+</footer>
+
+<dialog id="dlgFb" aria-labelledby="fbT">
+  <form id="fbForm" novalidate>
+    <h3 id="fbT">Форма зворотного зв’язку</h3>
+    <div class="field"><label for="fbName">Ваше ім’я</label><input id="fbName" autocomplete="name"><p class="err" id="fbNameE"></p></div>
+    <div class="field"><label for="fbMsg">Ваше повідомлення</label><textarea id="fbMsg"></textarea><p class="err" id="fbMsgE"></p></div>
+    <p class="ok" id="fbOk" role="status" aria-live="polite"></p>
+    <div class="row"><button class="btn sec" type="button" data-close>Закрити</button><button class="btn" type="submit">Надіслати</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlgAdd" aria-labelledby="adT">
+  <form id="adForm" novalidate>
+    <h3 id="adT">Додати заняття</h3>
+    <div class="field"><label for="adS">Назва предмета</label><input id="adS"><p class="err" id="adSE"></p></div>
+    <div class="grid2">
+      <div class="field"><label for="adTime">Час початку</label><input type="time" id="adTime" value="09:30"></div>
+      <div class="field"><label for="adR">Аудиторія</label><input id="adR" placeholder="ауд. 1.205"></div>
+    </div>
+    <div class="field"><label for="adTe">Викладач</label><input id="adTe" list="teachers"><datalist id="teachers"></datalist></div>
+    <div class="grid2">
+      <div class="field"><label for="adTy">Тип</label><select id="adTy"><option>Лекція</option><option>Практична</option><option>Лабораторна</option></select></div>
+      <div class="field"><label for="adG">Група</label><select id="adG"></select></div>
+    </div>
+    <div class="row"><button class="btn sec" type="button" data-close>Скасувати</button><button class="btn" type="submit">Додати</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlgName" aria-labelledby="nmT">
+  <form id="nmForm" novalidate>
+    <h3 id="nmT"></h3>
+    <div class="field"><label for="nmV" id="nmL"></label><input id="nmV"><p class="err" id="nmE"></p></div>
+    <div class="row"><button class="btn sec" type="button" data-close>Скасувати</button><button class="btn" type="submit">Додати</button></div>
+  </form>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
