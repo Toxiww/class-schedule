@@ -149,3 +149,28 @@ dialog h3{margin:0 0 14px;font-size:1.25rem}
   .head .btn.small{padding:0 10px;font-size:.8rem;min-height:36px}
   .h-day{font-size:.95rem;font-weight:700}
 }
+
+/* Виправлення для iOS Safari: поля дати й часу не виходять за колонку */
+.field,.fields>*,.grid2>*{min-width:0}
+.fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+input[type="date"],input[type="time"],select{display:block;width:100%;max-width:100%;min-width:0;-webkit-appearance:none;appearance:none;text-align:left;line-height:1.2}
+input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
+select{padding-right:36px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%235B5BF0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center}
+dialog{max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto}
+@media (max-width:600px){
+  dialog{padding:18px;width:calc(100vw - 28px)}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+  .row .btn{flex:1}
+}
+
+/* Рівні відступи у вікнах: порожні рядки помилок і підтвердження не займають місця */
+dialog form{display:flex;flex-direction:column;gap:14px}
+dialog h3{margin:0}
+dialog .field{margin:0}
+dialog .grid2{gap:14px}
+dialog .grid2 .field{margin:0}
+dialog .err{min-height:0;margin:6px 0 0}
+dialog .err:empty{display:none}
+dialog .ok{min-height:0;margin:0}
+dialog .ok:empty{display:none}
+dialog .row{margin-top:4px}
