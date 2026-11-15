@@ -174,3 +174,9 @@ dialog .err:empty{display:none}
 dialog .ok{min-height:0;margin:0}
 dialog .ok:empty{display:none}
 dialog .row{margin-top:4px}
+
+/* Вертикальне вирівнювання тексту в полях дати й часу (iOS Safari зміщує його вгору) */
+input[type="date"],input[type="time"]{display:flex;align-items:center;height:48px;min-height:48px;padding-top:0;padding-bottom:0;line-height:normal}
+input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{min-height:0;margin:0;padding:0;line-height:normal;text-align:left;width:100%}
+input[type="date"]::-webkit-datetime-edit,input[type="time"]::-webkit-datetime-edit{padding:0;margin:0;line-height:normal}
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,input[type="time"]::-webkit-datetime-edit-fields-wrapper{padding:0}
