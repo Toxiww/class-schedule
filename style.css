@@ -153,7 +153,8 @@ dialog h3{margin:0 0 14px;font-size:1.25rem}
 /* Виправлення для iOS Safari: поля дати й часу не виходять за колонку */
 .field,.fields>*,.grid2>*{min-width:0}
 .fields{grid-template-columns:repeat(2,minmax(0,1fr))}
-input[type="date"],input[type="time"],select{display:block;width:100%;max-width:100%;min-width:0;-webkit-appearance:none;appearance:none;text-align:left;line-height:1.2}
+input[type="date"],input[type="time"],select{width:100%;max-width:100%;min-width:0;text-align:left}
+select{-webkit-appearance:none;appearance:none}
 input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
 select{padding-right:36px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%235B5BF0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center}
 dialog{max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto}
@@ -175,8 +176,11 @@ dialog .ok{min-height:0;margin:0}
 dialog .ok:empty{display:none}
 dialog .row{margin-top:4px}
 
-/* Вертикальне вирівнювання тексту в полях дати й часу (iOS Safari зміщує його вгору) */
-input[type="date"],input[type="time"]{display:flex;align-items:center;height:48px;min-height:48px;padding-top:0;padding-bottom:0;line-height:normal}
-input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{min-height:0;margin:0;padding:0;line-height:normal;text-align:left;width:100%}
-input[type="date"]::-webkit-datetime-edit,input[type="time"]::-webkit-datetime-edit{padding:0;margin:0;line-height:normal}
-input[type="date"]::-webkit-datetime-edit-fields-wrapper,input[type="time"]::-webkit-datetime-edit-fields-wrapper{padding:0}
+/* Вертикальне вирівнювання тексту в полях дати й часу — лише для сенсорних екранів (iOS Safari зміщує текст вгору) */
+@media (hover:none) and (pointer:coarse){
+  input[type="date"],input[type="time"]{display:flex;align-items:center;height:48px;min-height:48px;padding-top:0;padding-bottom:0;line-height:normal}
+  input[type="date"]::-webkit-date-and-time-value,input[type="time"]::-webkit-date-and-time-value{min-height:0;margin:0;padding:0;line-height:normal;text-align:left;width:100%}
+  input[type="date"]::-webkit-datetime-edit,input[type="time"]::-webkit-datetime-edit{padding:0;margin:0;line-height:normal}
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper,input[type="time"]::-webkit-datetime-edit-fields-wrapper{padding:0}
+  input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{margin-left:auto}
+}
